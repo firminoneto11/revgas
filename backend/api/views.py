@@ -6,17 +6,21 @@ from api.serializers import BanksSerializer
 
 
 class BanksApi(Gen):
+    """
+    An API for listing the existing bank companies.
+    """
     queryset = Banks.objects.all()
     serializer_class = BanksSerializer
 
     def get(self, _request, compensation_code=None):
+        # Returning a specific element from the database if a compensation code is informed
         if compensation_code:
             self.queryset = find_element(model=Banks, identifier=compensation_code)
             if self.queryset is not None:
                 serialized_data = self.get_serializer(instance=self.queryset, many=False)
                 return Response(data=serialized_data.data)
-            return Response(data={"bank_invalid": "There is not bank registered within the database with the given compensation code."}, status=st.HTTP_404_NOT_FOUND)
+            return Response(data={"invalid_bank": "There isn't a bank registered in the database with the given compensation code."}, status=st.HTTP_404_NOT_FOUND)
 
         # Getting the paginated serialized data and returning it
-        paginated_serialized_data = self.get_paginated_serializer()
-        return self.get_paginated_response(data=paginated_serialized_data.data)
+        paginated_serializer = self.get_paginated_serializer()
+        return self.get_paginated_response(data=paginated_serializer.data)
