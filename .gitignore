@@ -1,0 +1,9 @@
+.idea
+
+.vscode
+
+.env
+
+banks.csv
+
+__pycache__
