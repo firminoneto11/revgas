@@ -1,9 +1,13 @@
-.idea
+backend/.idea
 
-.vscode
+backend/.vscode
 
-.env
+backend/.env
 
-banks.csv
+backend/banks.csv
 
-__pycache__
+backend/__pycache__
+
+frontend/.idea
+
+frontend/.vscode
