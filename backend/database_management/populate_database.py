@@ -8,6 +8,12 @@ class DatabasePopulation:
     sql_file = r'.\database_management\populate_database.sql'
     csv_file = r'.\database_management\banks.csv'
     headers = ('Código de compensação', 'Nome Instituição')
+    access_data = {
+            'host': config('HOST'),
+            'dbname': config('NAME'),
+            'user': config('USER'),
+            'password': config('PASSWORD')
+        }
 
     @classmethod
     def check_sql_file(cls):
@@ -30,13 +36,7 @@ class DatabasePopulation:
     
     @classmethod
     def populate_database(cls):
-        access_data = {
-            'host': config('HOST'),
-            'dbname': config('NAME'),
-            'user': config('USER'),
-            'password': config('PASSWORD')
-        }
-        with OpenPostgre(**access_data) as cursor:
+        with OpenPostgre(**cls.access_data) as cursor:
             with open(file=cls.sql_file, mode='r', encoding='utf-8') as arch:
                 data = arch.read()
                 try:
