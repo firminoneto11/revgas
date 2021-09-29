@@ -43,11 +43,17 @@ INSTALLED_APPS = [
     # DRF
     'rest_framework',
     # API
-    'api'
+    'api',
+    # Cors
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    # Middleware for CORS
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -147,3 +153,6 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": 'rest_framework.pagination.PageNumberPagination',
     "PAGE_SIZE": 10
 }
+
+# CORS config
+CORS_ALLOWED_ORIGINS = [config('CORS')]

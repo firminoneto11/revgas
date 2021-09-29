@@ -110,7 +110,7 @@ INSERT INTO "BANKS" (created_at, updated_at, compensation_code, institution_name
 INSERT INTO "BANKS" (created_at, updated_at, compensation_code, institution_name) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 654, 'Banco A.J. Renner S.A');
 INSERT INTO "BANKS" (created_at, updated_at, compensation_code, institution_name) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 655, 'Banco Votorantim S.A');
 INSERT INTO "BANKS" (created_at, updated_at, compensation_code, institution_name) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 707, 'Banco Daycoval S.A.');
-INSERT INTO "BANKS" (created_at, updated_at, compensation_code, institution_name) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 719, 'Banif – Banco Internacional do Funchal (Brasil) S.A');
+INSERT INTO "BANKS" (created_at, updated_at, compensation_code, institution_name) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 719, 'Banif – Banco Internacional do Funchal (Brasil) - S.A');
 INSERT INTO "BANKS" (created_at, updated_at, compensation_code, institution_name) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 721, 'Banco Credibel S.A.');
 INSERT INTO "BANKS" (created_at, updated_at, compensation_code, institution_name) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 734, 'Banco Gerdau S.A');
 INSERT INTO "BANKS" (created_at, updated_at, compensation_code, institution_name) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 735, 'Banco Pottencial S.A');

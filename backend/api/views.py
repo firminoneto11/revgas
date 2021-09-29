@@ -23,4 +23,6 @@ class BanksApi(Gen):
 
         # Getting the paginated serialized data and returning it
         paginated_serializer = self.get_paginated_serializer()
-        return self.get_paginated_response(data=paginated_serializer.data)
+        if paginated_serializer:
+            return self.get_paginated_response(data=paginated_serializer.data)
+        return Response(data={"error": "An error occurred."}, status=st.HTTP_500_INTERNAL_SERVER_ERROR)

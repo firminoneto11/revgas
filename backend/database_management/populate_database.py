@@ -4,9 +4,9 @@ from postgre_context_manager import OpenPostgre
 from decouple import config
 
 
-class DatabasePopulator:
-    sql_file = r'.\populate_database.sql'
-    csv_file = r'.\banks.csv'
+class DatabasePopulation:
+    sql_file = r'.\database_management\populate_database.sql'
+    csv_file = r'.\database_management\banks.csv'
     headers = ('Código de compensação', 'Nome Instituição')
 
     @classmethod
@@ -44,9 +44,9 @@ class DatabasePopulator:
                     cursor.execute("""ALTER SEQUENCE "BANKS_id_seq" RESTART WITH 1;""")
                     cursor.execute(data)
                 except Exception as error:
-                    print(f"An error occured while trying to insert the data into the database. More details:\n{error}")
+                    print(f"An error occurred while trying to insert the data into the database. More details:\n{error}")
                 else:
-                    print('Data inserted succesfully!')
+                    print('Data inserted successfully!')
     
     @classmethod
     def execute(cls):
@@ -56,4 +56,4 @@ class DatabasePopulator:
 
 
 if __name__ == '__main__':
-    DatabasePopulator.execute()
+    DatabasePopulation.execute()
