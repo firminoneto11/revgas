@@ -55,7 +55,7 @@ if DEBUG:
     'django.middleware.security.SecurityMiddleware',
 
     # Middleware for CORS
-    'corsheaders.middleware.CorsMiddleware' if DEBUG else '',
+    'corsheaders.middleware.CorsMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -82,7 +82,7 @@ ROOT_URLCONF = 'revgas.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
