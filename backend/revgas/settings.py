@@ -33,7 +33,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS')
 
 # Application definition
 
-installed_apps_data = [
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,30 +44,17 @@ installed_apps_data = [
     'rest_framework',
     # API
     'api'
+    # Cors
+    'corsheaders'
 ]
 
-if DEBUG:
-    installed_apps_data.append('corsheaders')
 
-    INSTALLED_APPS = installed_apps_data
-
-    MIDDLEWARE = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
     # Middleware for CORS
     'corsheaders.middleware.CorsMiddleware',
 
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-else:
-    INSTALLED_APPS = installed_apps_data
-    MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -170,6 +157,5 @@ REST_FRAMEWORK = {
 }
 
 # CORS config
-if DEBUG:
-    CORS_ALLOWED_ORIGINS = [config('CORS', default=None)]
-    # CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = [config('CORS', default=None)]
+CORS_ALLOW_ALL_ORIGINS = True
