@@ -1,0 +1,1 @@
+web: gunicorn revgas.wsgi --log-file -
