@@ -12,10 +12,10 @@ class BanksApi(Gen):
     queryset = Banks.objects.all()
     serializer_class = BanksSerializer
 
-    def get(self, _request, pk=None):
+    def get(self, _request, comp_code=None):
         # Returning a specific element from the database if a compensation code is informed
-        if pk:
-            self.queryset = find_element(model=Banks, identifier=pk)
+        if comp_code:
+            self.queryset = find_element(model=Banks, identifier=comp_code)
             if self.queryset is not None:
                 serialized_data = self.get_serializer(instance=self.queryset, many=False)
                 return Response(data=serialized_data.data)
@@ -27,5 +27,5 @@ class BanksApi(Gen):
         #     return self.get_paginated_response(data=paginated_serializer.data)
         # return Response(data={"error": "An error occurred."}, status=st.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        serialized_data = self.get_serializer(instance=self.get_queryset(), many=True)
+        serialized_data = self.get_serializer(instance=self.queryset.all(), many=True)
         return Response(data=serialized_data.data)

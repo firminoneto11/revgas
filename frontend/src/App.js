@@ -68,7 +68,7 @@ function App() {
     })
 
     // conditional render to control rather the whole data is shown or only the filtered element
-    if (filter.length == 0) {
+    if (filter.length === 0) {
       return <tbody>{banks}</tbody>
     } else {
       return <tbody>{filtered}</tbody>
@@ -81,7 +81,7 @@ function App() {
     //console.log(typeof currentValue)
     setValue(currentValue)
 
-    if (value == '') {
+    if (value === '') {
       setFilter([])
     } else {
       // important to use filter so it returns multiple results

@@ -19,7 +19,7 @@ def find_element(model, identifier):
         None if it does not find it.
         """
         try:
-            element = model.objects.get(pk=int(identifier))
+            element = model.objects.get(compensation_code=int(identifier))
         except Exception:
             return None
         else:
