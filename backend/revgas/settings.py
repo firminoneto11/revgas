@@ -33,7 +33,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS')
 
 # Application definition
 
-INSTALLED_APPS = [
+installed_apps_data = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,10 +43,14 @@ INSTALLED_APPS = [
     # DRF
     'rest_framework',
     # API
-    'api',
-    # Cors
-    'corsheaders' if DEBUG else False
+    'api'
 ]
+
+if DEBUG:
+    installed_apps_data.append('corsheaders')
+    INSTALLED_APPS = installed_apps_data
+else:
+    INSTALLED_APPS = installed_apps_data
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
