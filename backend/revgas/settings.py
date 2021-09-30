@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool, default=False)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -45,14 +45,14 @@ INSTALLED_APPS = [
     # API
     'api',
     # Cors
-    'corsheaders'
+    'corsheaders' if DEBUG else ''
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
     # Middleware for CORS
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware' if DEBUG else '',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -155,5 +155,6 @@ REST_FRAMEWORK = {
 }
 
 # CORS config
-CORS_ALLOWED_ORIGINS = [config('CORS')]
-# CORS_ALLOW_ALL_ORIGINS = True
+if DEBUG:
+    CORS_ALLOWED_ORIGINS = [config('CORS', default=None)]
+    # CORS_ALLOW_ALL_ORIGINS = True
