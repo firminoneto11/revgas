@@ -18,6 +18,6 @@ class Banks(Base):
 
     class Meta:
         db_table = "BANKS"
-        ordering = ["-id"]
+        ordering = ["compensation_code"]
         verbose_name = "Bank"
         verbose_name_plural = "Banks"
