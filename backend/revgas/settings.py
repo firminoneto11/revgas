@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     # API
     'api',
     # Cors
-    'corsheaders' if DEBUG else ''
+    'corsheaders' if DEBUG else None
 ]
 
 MIDDLEWARE = [
