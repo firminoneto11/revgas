@@ -81,7 +81,6 @@ function App() {
     //console.log(typeof currentValue)
     setValue(currentValue)
 
-
     if (value == '') {
       setFilter([])
     } else {
@@ -92,8 +91,6 @@ function App() {
 
 
   }
-
-
 
   // final front end
   return (
