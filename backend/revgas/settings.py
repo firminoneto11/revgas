@@ -157,5 +157,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # }
 
 # CORS config
-CORS_ALLOWED_ORIGINS = [config('CORS', default=None)]
+CORS_ALLOWED_ORIGINS = ["https://banksindex.netlify.app"]
 # CORS_ALLOW_ALL_ORIGINS = True
