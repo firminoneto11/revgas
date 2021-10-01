@@ -18,13 +18,12 @@ body {
 
 .search-box {
     margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .search-text {
+    display: inline;
     margin-right: 0.5rem;
+    margin-left: 15rem;
     color: #EEEEEE;
     font-size: 1.2rem;
     font-family: helvetica;
@@ -32,23 +31,52 @@ body {
 }
 
 .search-input {
-    padding: 10px;
+    display: inline-block;
+    margin-right: 30%;
+    padding: 5px;
     margin-bottom: 1rem;
-    width: 30%;
+    width: 20%;
     outline: none;
+    text-align: center;
+}
+
+.look-for-bank {
+    position: absolute;
+    right: 22%;
+    padding: 5px;
+    width: 100px;
+    background-color: #696773;
+    color: #EEEEEE;
+    border: 2px solid #EEEEEE;
+    border-radius: 3px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.look-for-bank:hover {
+    background-color: #EEEEEE;
+    color: #696773;
+    border: 2px solid #696773;
+}
+
+.table-container {
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 60vh;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 
 .table {
   border-collapse: collapse;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  width: 100%;
   font-size: 0.9rem;
   background-color: #696773;
-  overflow: auto;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
   font-family: Helvetica;
   border: 2px solid #363946;
 }
@@ -71,4 +99,53 @@ body {
 .table th, .table td {
     padding: 15px 15px;
     border-right: 2px solid #363946;
+}
+
+@media screen and (max-width: 1260px) {
+    
+    .search-text {
+        display: block;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+        text-align: center !important;
+        color: #EEEEEE;
+        font-size: 1.2rem;
+        font-family: helvetica;
+        margin-bottom: 1rem;
+    }
+    
+    .search-input {
+        display: block;
+        margin-left: auto;
+        margin-right: auto !important;
+        padding: 5px;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        min-width: 50%;
+        outline: none;
+        text-align: center;
+    }
+    
+    .look-for-bank {
+        position: static;
+        right: none !important;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 5px;
+        width: 100px;
+    }
+}
+
+/* Removing the little arrows from the input number */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
