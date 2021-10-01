@@ -1,83 +1,74 @@
 
-.table {
-    position: fixed;
-    inset: 0;
-    width: 900px;
-    height: 700px;
-    background: white;
-    border: 3px solid #ededed;
-    border-radius: 10px;
-    margin: auto;
-    padding: 0 15px;
-    overflow: scroll;
-  }
-  
-  .table-title {
-    font-size: 18px;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #28262C;
+}
+
+.title {
+    font-size: 2rem;
     text-align: center;
-  }
-  
-  .tabela {
-    border-collapse: collapse;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    
-    background-color: #ededed;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.45); */
-  
-    width: 100%;
     font-family: Helvetica;
-    
-  
-  }
-  
-  .tabela thead tr {
-    background-color: white;
-    color: #5c6469;
-    text-align: center;
-    font-weight: bold;
-    border: 2px solid #ededed;
-  
-  
-  }
-  
-  
-  .tabela tbody tr td {
-    text-align: center;
-  }
-  
-  .table-search {
+    color: #EEEEEE;
+    margin-top: 1rem;
+}
+
+.search-box {
+    margin-top: 1rem;
     display: flex;
     align-items: center;
-  }
-  
-  .table-search-text {
-    margin-right: .5rem;
-  }
-  
-  
-  .tabela thead tr th:not(:last-child) {
-    border-right: 2px solid #ededed;
-  }
-  
-  .tabela th, .tabela td {
-    padding: 15px 15px;
-  }
-  
-  .tabela tbody tr {
-    border-bottom: 1px solid #dddddd;
-  }
-  
-  .tabela tbody tr:nth-last-of-type(even) {
-    background-color: white;
-    
-  }
-  
-  /* .tabela tbody tr:last-of-type {
+    justify-content: center;
+}
+
+.search-text {
+    margin-right: 0.5rem;
+    color: #EEEEEE;
+    font-size: 1.2rem;
+    font-family: helvetica;
+    margin-bottom: 1rem;
+}
+
+.search-input {
+    padding: 10px;
+    margin-bottom: 1rem;
+    width: 30%;
+    outline: none;
+}
+
+.table {
+  border-collapse: collapse;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  background-color: #696773;
+  overflow: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Helvetica;
+  border: 2px solid #363946;
+}
+
+.table thead tr {
+    background-color: #5c6469;
+    color: #EEEEEE;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid #363946;
+}
+
+.table tbody tr td {
+    text-align: center;
+    background-color: #696773;
+    color: #EEEEEE;
     border-bottom: 2px solid #363946;
-  } */
-  
+}
+
+.table th, .table td {
+    padding: 15px 15px;
+    border-right: 2px solid #363946;
+}
