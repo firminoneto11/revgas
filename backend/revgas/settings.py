@@ -156,6 +156,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     "PAGE_SIZE": 10
 # }
 
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        # 'rest_framework.renderers.BrowsableAPIRenderer',
+    ]
+}
+
 # CORS config
-CORS_ALLOWED_ORIGINS = ["https://banksindex.netlify.app"]
-# CORS_ALLOW_ALL_ORIGINS = True
+
+if DEBUG:
+    CORS_ALLOW_ALL_ORIGINS = True
+else:
+    CORS_ALLOWED_ORIGINS = ["https://banksindex.netlify.app"]
