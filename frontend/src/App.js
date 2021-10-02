@@ -2,19 +2,33 @@ import './App.css';
 import React, { useState, useEffect } from 'react'
 
 
-function App() {
+const App = _ => {
     // Declaring a hook to store the fetched data
     const [data, set_data] = useState()
 
+    // Declaring a hook for the tiny loading animation while fetching api data
+    const [loading, set_loading] = useState(false)
 
     // Function to fetch api data
     const get_banks_data = async _ => {
         const url = 'https://revgas.herokuapp.com/revgas/api/banks/'
         // const url = 'http://127.0.0.1:8000/revgas/api/banks/'
 
-        let response = await fetch(url)
-        response = await response.json()
-        set_data(response)
+        try {
+            // Showing the spinner while fetching
+            set_loading(true)
+
+            // Fetching the API and changing the state of the component
+            let response = await fetch(url)
+            response = await response.json()
+            set_data(response)
+
+            // Removing the spinner while fetching
+            set_loading(false)
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
     // Function to fetch the api data with a parameter
@@ -22,9 +36,21 @@ function App() {
         const url = `https://revgas.herokuapp.com/revgas/api/banks/${comp_code}`
         // const url = `http://127.0.0.1:8000/revgas/api/banks/${comp_code}`
 
-        let response = await fetch(url)
-        response = await response.json()
-        set_data(response)
+        try {
+            // Showing the spinner while fetching
+            set_loading(true)
+
+            // Fetching the API and changing the state of the component
+            let response = await fetch(url)
+            response = await response.json()
+            set_data(response)
+
+            // Removing the spinner while fetching
+            set_loading(false)
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
     // Calling a function after the rendering phase
@@ -83,14 +109,19 @@ function App() {
         return <tbody>{banks}</tbody>
     }
 
+    // Spinner Component
+    const LoadingSpinner = _ => {
+        return <div className="loading loading--full-height"></div>
+    }
+
     // Function that will be executed when the user clicks on the "search" button
-    function search_bank(event) {
+    const search_bank = event => {
         const comp_code = event.target.previousSibling.value
         comp_code.length > 0 ? get_bank_data(comp_code) : get_banks_data()
     }
 
     // Binding the "return" key to trigger the "search_bank" function
-    function search_button(event) {
+    const search_button = event => {
         if (event.keyCode === 13) {
             event.preventDefault()
             event.target.nextSibling.click()
@@ -98,7 +129,7 @@ function App() {
     }
 
     // Cleaning the input field and fetching the api when the "Get all banks" is pressed
-    function fetch_all_banks(event) {
+    const fetch_all_banks = event => {
         event.preventDefault()
         let previous_sibling = event.target.previousSibling
         previous_sibling.previousSibling.value = ''
@@ -118,19 +149,20 @@ function App() {
                 <button className="all-banks" onClick={fetch_all_banks}>Get all banks</button>
             </div>
 
-            <div className="table-container">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Compensation Code</th>
-                            <th>Institution name</th>
-                        </tr>
-                    </thead>
-                    <TableBody banks_data={data} />
-                </table>
-            </div>
-
+            {loading ? (<LoadingSpinner />) : (
+                <div className="table-container">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Compensation Code</th>
+                                <th>Institution name</th>
+                            </tr>
+                        </thead>
+                        <TableBody banks_data={data} />
+                    </table>
+                </div>
+            )}
         </div>
     );
 }

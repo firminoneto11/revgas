@@ -28,10 +28,15 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool, default=False)
 
+
+# Allowed hosts and CORS configs
+
 if DEBUG:
     ALLOWED_HOSTS = ['*']
+    CORS_ALLOW_ALL_ORIGINS = True
 else:
     ALLOWED_HOSTS = ["revgas.herokuapp.com"]
+    CORS_ALLOWED_ORIGINS = ["https://banksindex.netlify.app"]
 
 
 # Application definition
@@ -153,22 +158,12 @@ STATIC_ROOT = join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# DRF
-# REST_FRAMEWORK = {
-#     "DEFAULT_PAGINATION_CLASS": 'rest_framework.pagination.PageNumberPagination',
-#     "PAGE_SIZE": 10
-# }
 
+# DRF Configs
+
+renderer_classes = ['rest_framework.renderers.JSONRenderer', 'rest_framework.renderers.BrowsableAPIRenderer']
 REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-        # 'rest_framework.renderers.BrowsableAPIRenderer',
-    ]
+    'DEFAULT_RENDERER_CLASSES': renderer_classes if DEBUG else [renderer_classes[0]],
+    "DEFAULT_PAGINATION_CLASS": 'rest_framework.pagination.PageNumberPagination',
+    "PAGE_SIZE": 10
 }
-
-# CORS config
-
-if DEBUG:
-    CORS_ALLOW_ALL_ORIGINS = True
-else:
-    CORS_ALLOWED_ORIGINS = ["https://banksindex.netlify.app"]
